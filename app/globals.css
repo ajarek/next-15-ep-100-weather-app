@@ -1,15 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+--background: #ffffff;
+--foreground: #171717;
+--Neutral_900: hsl(243, 96%, 9%);
+--Neutral_800: hsl(243, 27%, 20%);
+--Neutral_700: hsl(243, 23%, 24%);
+--Neutral_600: hsl(243, 23%, 30%);
+--Neutral_300: hsl(240, 6%, 70%);
+--Neutral_200: hsl(250, 6%, 84%);
+--Neutral_0: hsl(0, 0%, 100%);
+--Orange_500: hsl(28, 100%, 52%);
+--Blue_500: hsl(233, 67%, 56%);
+--Blue_700: hsl(248, 70%, 36%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-Neutral_900: var(--Neutral_900);
+  --color-Neutral_800: var(--Neutral_800);
+  --color-Neutral_700: var(--Neutral_700);
+  --color-Neutral_600: var(--Neutral_600);
+  --color-Neutral_300: var(--Neutral_300);
+  --color-Neutral_200: var(--Neutral_200);
+  --color-Neutral_0: var(--Neutral_0);
+  --color-Orange_500: var(--Orange_500);
+  --color-Blue_500: var(--Blue_500);
+  --color-Blue_700: var(--Blue_700);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-bricolage-grotesque: var(--font-bricolage-grotesque);
 }
 
 @media (prefers-color-scheme: dark) {
