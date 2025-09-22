@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className='flex items-center gap-4'>
         <Image src='/images/icon-units.svg' alt='units' width={16} height={16}/>
         <select className='text-[19px] bg-Neutral_900' name="select">
-          <option value="">Select</option>
+          <option value="">Units</option>
           <option value="metric">Metric</option>
           <option value="imperial">Imperial</option>
         </select>
