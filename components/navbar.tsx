@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Navbar = () => {
   return (
-    <nav className='w-full max-w-[1216px] h-full min-h-[43px] flex items-center justify-between  '> 
+    <nav className='w-[1216px]  h-[43px] flex items-center justify-between  '> 
       <div>
         <Image src='/images/logo.svg' alt='logo' width={197} height={40}/>
       </div>
