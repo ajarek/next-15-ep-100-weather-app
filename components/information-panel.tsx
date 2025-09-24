@@ -1,7 +1,20 @@
 import Image from 'next/image'
 import React from 'react'
+const options: Intl.DateTimeFormatOptions = {
+  weekday: "long",
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+};
+import { apiWeather } from '@/lib/api'
+import { switchWeatherCode } from '@/lib/switchWaterCode';
+import { getLocation } from '@/lib/getLocation';
 
-const InformationPanel = () => {
+
+const InformationPanel = async () => {
+  const weather = await apiWeather()
+  const location = await getLocation({latitude: weather.latitude, longitude: weather.longitude})
+  console.log(weather)
   return (
     <div className='w-full  grid grid-cols-[800px_1fr]  gap-[32px]'>
       <div className='w-[800px] flex flex-col gap-[32px]'>
@@ -15,19 +28,19 @@ const InformationPanel = () => {
           />
           <div className='absolute left-[24px] top-[109px] '>
             <div className='w-full max-w[460px] h-[68px] flex flex-col items-start gap-[12px]'>
-              <h1 className='text-[28px] font-semibold '>Berlin, Germany</h1>
-              <p className='text-[18px]'>Tuesday, Aug 5, 2025</p>
+              <h1 className='text-[28px] font-semibold '>{location.locality}, {location.country}</h1>
+              <p className='text-[18px]'>{new Date(weather.current_weather.time).toLocaleString('en-EN', options)}</p>
             </div>
           </div>
           <div className='absolute right-[24px] top-[83px] '>
             <div className='w-[292px] h-[120px] flex  items-center justify-end gap-[20px]'>
               <Image
-                src='/images/icon-sunny.webp'
+                src={switchWeatherCode(weather.current_weather.weathercode)}
                 alt='sunny'
                 width={120}
                 height={120}
               />
-              <h1 className='text-[96px] font-semibold '>68°</h1>
+              <h1 className='text-[96px] font-semibold '>{weather.current_weather.temperature}°</h1>
             </div>
           </div>
         </div>
