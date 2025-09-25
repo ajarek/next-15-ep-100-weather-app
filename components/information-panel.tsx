@@ -8,17 +8,18 @@ const options: Intl.DateTimeFormatOptions = {
 };
 import { apiWeather } from '@/lib/api'
 import { switchWeatherCode } from '@/lib/switchWaterCode';
-import { getLocation } from '@/lib/getLocation';
+import { changeCityToGeographicData} from '@/lib/getLocation';
 
 
-const InformationPanel = async () => {
-  const weather = await apiWeather()
-  const location = await getLocation({latitude: weather.latitude, longitude: weather.longitude})
-  console.log(weather)
+const InformationPanel = async ({ city }: { city: string }) => {
+  const data = await changeCityToGeographicData(city)
+  console.log(data)
+  const weather = await apiWeather({latitude: data.latitude, longitude: data.longitude});
+ 
   return (
     <div className='w-full  grid grid-cols-[800px_1fr]  gap-[32px]'>
-      <div className='w-[800px] flex flex-col gap-[32px]'>
-        <div className='relative w-full max-w-[800px] h-[286px] '>
+      <div className='w-full flex flex-col gap-[32px]'>
+        <div className='relative  w-[800px] h-[286px] '>
           <Image
             src='/images/bg-today-large.svg'
             alt='bg'
@@ -28,19 +29,19 @@ const InformationPanel = async () => {
           />
           <div className='absolute left-[24px] top-[109px] '>
             <div className='w-full max-w[460px] h-[68px] flex flex-col items-start gap-[12px]'>
-              <h1 className='text-[28px] font-semibold '>{location.locality}, {location.country}</h1>
-              <p className='text-[18px]'>{new Date(weather.current_weather.time).toLocaleString('en-EN', options)}</p>
+              <h1 className='text-[28px] font-semibold '>{data.city}, {data.countryName}</h1>
+              <p className='text-[18px]'>{new Date(weather?.current_weather?.time || new Date()).toLocaleString('en-EN', options)}</p>
             </div>
           </div>
           <div className='absolute right-[24px] top-[83px] '>
             <div className='w-[292px] h-[120px] flex  items-center justify-end gap-[20px]'>
               <Image
-                src={switchWeatherCode(weather.current_weather.weathercode)}
+                src={switchWeatherCode(weather?.current_weather?.weathercode)}
                 alt='sunny'
                 width={120}
                 height={120}
               />
-              <h1 className='text-[96px] font-semibold '>{weather.current_weather.temperature}°</h1>
+              <h1 className='text-[96px] font-semibold '>{weather?.current_weather?.temperature}°</h1>
             </div>
           </div>
         </div>
