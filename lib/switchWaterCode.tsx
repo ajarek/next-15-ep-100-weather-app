@@ -1,5 +1,3 @@
-
-
 export const switchWeatherCode = (weatherCode: number) => {
   switch (weatherCode) {
     case 0:
@@ -40,7 +38,5 @@ export const switchWeatherCode = (weatherCode: number) => {
       return '/images/icon-storm.webp'
     default:
       return '/images/icon-sunny.webp'
-    
   }
 }
-

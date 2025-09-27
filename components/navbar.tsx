@@ -1,20 +1,17 @@
 import Image from 'next/image'
 
-
 const Navbar = () => {
   return (
-    <nav className='w-[1216px]  h-[43px] flex items-center justify-between  '> 
+    <nav className='w-[1216px]  h-[43px] flex items-center justify-between  '>
       <div>
-        <Image src='/images/logo.svg' alt='logo' width={197} height={40}/>
+        <Image
+          src='/images/logo.svg'
+          alt='logo'
+          width={197}
+          height={40}
+        />
       </div>
-      <div className='flex items-center gap-4'>
-        <Image src='/images/icon-units.svg' alt='units' width={16} height={16}/>
-        <select className='text-[19px] bg-Neutral_900' name="select">
-          <option value="">Units</option>
-          <option value="metric">Metric</option>
-          <option value="imperial">Imperial</option>
-        </select>
-      </div>
+      <div className='flex items-center gap-4'></div>
     </nav>
   )
 }

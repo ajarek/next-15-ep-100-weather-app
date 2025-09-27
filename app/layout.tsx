@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${bricolageGrotesque.variable} antialiased`}
       >
-        <div className="w-full mx-auto max-w-[1440px] h-full min-h-[1158px] px-[112px] pt-[48px] pb-[80px] bg-Neutral_900 ">
+        <div className="w-full mx-auto max-w-[1440px] h-full min-h-[1158px] px-[112px] pt-[48px] max-lg:px-[16px] pb-[80px] bg-Neutral_900 ">
        <Navbar/>
        
         {children}

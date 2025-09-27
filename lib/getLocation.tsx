@@ -1,7 +1,4 @@
-
-
 export const changeCityToGeographicData = async (city: string) => {
-  
   const res = await fetch(
     `https://nominatim.openstreetmap.org/search?q=${city}&format=json&limit=1`,
     { cache: 'no-store' }
